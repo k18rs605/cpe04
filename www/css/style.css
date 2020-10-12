@@ -77,3 +77,7 @@
       font-style: italic;
       border-radius: 20px;
     }
+
+    #time::after{
+      content: "秒";
+    }
