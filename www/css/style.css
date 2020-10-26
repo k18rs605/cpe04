@@ -61,6 +61,13 @@
         color: rgb(100, 110, 255);
     }
     
+    #btn5 {
+        font-size: 20px;
+        position:absolute; top:530px; left:2%; width:43%; height:60px; 
+        background-color: rgb(22, 221, 88);
+        color: rgb(0, 19, 105);
+    }
+
     #minute {
         font-size: 30px;
         position:absolute; top:450px; left:60px; width:80px; height:40px;   

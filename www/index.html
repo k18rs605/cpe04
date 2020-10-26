@@ -38,6 +38,11 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+
+         $('#btn5').click(function(e) {
+            btn5Click(e);
+        });
+
         init();
     });
     
@@ -162,6 +167,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btn5').prop('disabled', false);
         
     }
 
@@ -205,16 +211,24 @@
 
     // ButtonCがクリックされた時の処理
     function btnCClick(e){
-       // alarm();
         active = false;
         pause = false;
         pauseTime = 0;
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
         $("#time").html("経過時間： 0");
-        $("#remain").html("残り時間： " + period);
+        $("#remain").html("残り時間： " + parseInt(period/60) + "分" + parseInt(period%60) + "秒");
         
     }
     
+    // Button5がクリックされた時の処理
+    function btn5Click(e){
+      if(!active && !pause){
+        period = 60* 5 ;
+        $("#time").html("経過時間： 0");
+        $("#remain").html("残り時間： " + parseInt(period/60) + "分" + parseInt(period%60) + "秒");
+        }
+    }
+
  
     // 繰り返し実行する処理
     function timer(){  
@@ -222,7 +236,7 @@
         var time = parseInt( (new Date()  - startTime)/1000 - (pauseTime/2));
         var rest = period - time;
         $("#time").html("経過時間： " + time);
-         $("#remain").html("残り時間： " + rest);
+         $("#remain").html("残り時間： " + parseInt(rest/60) + "分" + parseInt(rest%60) + "秒");
          analog(rest);
       }else if(pause){
         pauseTime ++;
@@ -247,8 +261,9 @@
     <div id="time">Time</div>
     <button id="btnA">START</button>  
     <button id="btnB">PAUSE</button>  
-    <button id="btnC">SET</button>  
+    <button id="btnC">SET</button>   
     <input type="number" id="minute" value=3 >
     <input type="number" id="second" value=0 >
+    <button id="btn5">5minSet</button> 
 </body>
 </html>
